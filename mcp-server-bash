@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+import subprocess
+from mcp.server.mcpserver import MCPServer
+
+server = MCPServer("bash")
+
+@server.tool()
+def run(command: str) -> str:
+    """Run a shell command."""
+    r = subprocess.run(command, shell=True, capture_output=True, text=True)
+    out = r.stdout + r.stderr
+    return out if r.returncode == 0 else f"exit {r.returncode}\n{out}"
+
+server.run()

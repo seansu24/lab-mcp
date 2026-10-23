@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "label": { "enum": ["funny", "not_funny"] },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1, "description": "higher is more confident" },
+    "explanation": { "type": "string", "description": "1 sentence" }
+  },
+  "required": ["label", "confidence", "explanation"],
+  "additionalProperties": false
+}
